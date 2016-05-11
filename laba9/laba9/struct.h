@@ -1,3 +1,14 @@
+#include<stdio.h>
+#include<stdlib.h>
+#include<iostream> 
+#include <conio.h>  
+#include <stdlib.h> 
+#include <errno.h>
+#include<string.h>
+
+void input(char*);
+void output(char*);
+
 enum Art { poetry, prose, paint }; //жанр
 
 enum PoetryForm{ Lyrica, Dramatical, Prose, Epic };//форма стиха
@@ -10,11 +21,11 @@ enum PaintTechn{ Pastel, Oil, Gouache, Encaustic, Acril };//техника исполнения
 
 struct Work
 {
-	char name[40];
+	char name[10];
 	Art tag;
 	int year;
-	char author[50];
-	char nation[20];
+	char author[10];
+	char nation[10];
 	union
 	{
 		struct
