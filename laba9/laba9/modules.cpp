@@ -4,9 +4,10 @@
 using namespace std;
 
 int n,k;
+Work work;
+
 void input(char *t)
 {
-	Work work[10];
 	FILE *f;
 	fopen_s(&f, t, "wb");
 	if (f == NULL)
@@ -16,12 +17,11 @@ void input(char *t)
 		cout << "Enter number of works: "; cin >> n;
 		for (int i = 0; i < n; i++)
 		{
-			cin >> work[i].name;
-			cin >> k;
-			cin>>work[i].year;
-			cin>> work[i].author;
-			cin>>work[i].nation;
-			fwrite(&work[i], sizeof(Work), 1, f);
+			cin >> work.name;
+			cin >> work.year;
+			cin >> work.author;
+			cin >> work.nation;
+			fwrite(&work, sizeof(Work), 1, f);
 		}
 	}
 	fclose(f);
@@ -29,7 +29,6 @@ void input(char *t)
 
 void output(char *t)
 {
-	Work work[20];
 	FILE *f;
 	fopen_s(&f, t, "rb");
 	if (f == NULL)
@@ -38,8 +37,9 @@ void output(char *t)
 	{
 		while (!feof(f)){
 			for (int i = 0; i < n; i++){
-				fread(&work[i], sizeof(Work), 1, f);
-				printf("%s %d %d %s %s\n", work[i].name, work[i].year,k, work[i].author,work[i].nation);
+				fread(&work, sizeof(Work), 1, f);
+				//fscanf_s(f,"%s  %d %s %s\n", work[i].name, work[i].year,  work[i].author, work[i].nation);
+				printf("%s %d %s %s\n", work.name,work.year, work.author,work.nation);
 				cout << "\n";
 			}
 		}
