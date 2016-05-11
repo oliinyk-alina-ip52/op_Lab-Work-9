@@ -7,8 +7,8 @@
 
 int _tmain(int argc, _TCHAR* argv[])
 {
-	input("text.txt");
-	output("text.txt");
+	input("text.dat");
+	output("text.dat");
 	return 0;
 }
 

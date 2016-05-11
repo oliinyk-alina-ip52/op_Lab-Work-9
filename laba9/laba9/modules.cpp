@@ -3,8 +3,8 @@
 
 using namespace std;
 
-int n,k;
-Work work;
+int n,k[10];
+Work work[20];
 
 void input(char *t)
 {
@@ -17,11 +17,11 @@ void input(char *t)
 		cout << "Enter number of works: "; cin >> n;
 		for (int i = 0; i < n; i++)
 		{
-			cin >> work.name;
-			cin >> work.year;
-			cin >> work.author;
-			cin >> work.nation;
-			fwrite(&work, sizeof(Work), 1, f);
+			cin >> work[i].name;
+			//cin >> k[i];
+			cin >> work[i].author;
+			cin >> work[i].nation;
+			fwrite(&work[i], sizeof(Work), 1, f);
 		}
 	}
 	fclose(f);
@@ -37,12 +37,12 @@ void output(char *t)
 	{
 		while (!feof(f)){
 			for (int i = 0; i < n; i++){
-				fread(&work, sizeof(Work), 1, f);
+				fread(&work[i], sizeof(Work), n, f);
 				//fscanf_s(f,"%s  %d %s %s\n", work[i].name, work[i].year,  work[i].author, work[i].nation);
-				printf("%s %d %s %s\n", work.name,work.year, work.author,work.nation);
-				cout << "\n";
+				printf("%s %s %s\n", work[i].name, work[i].author,work[i].nation);
 			}
 		}
 	}
+	system("pause");
 	fclose(f);
 }
